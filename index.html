@@ -14,17 +14,16 @@
     <div class="wrapper">
         <div class="nav">
             <h2>DailyNotes</h2>
-            <button class="nav--btn add">
-                add</i>
-            </button>
+            <button class="nav--btn add"><i class="fa-solid fa-plus"></i></button>
             <button class="nav--btn del"><i class="fas fa-trash-alt"></i></button>
+            <button class="nav--btn dm"><i class="fa-solid fa-moon"></i></button>
         </div>
         <div class="notes--container">
-            <div class="note">
+            <!-- <div class="note">
                 <h2 class="note--title">Zakupy</h2>
                 <p class="note--content">mąka, wódka, piwo, bimber</p>
                 <button class="note--delete"><i class="fas fa-trash-alt"></i></button>
-            </div>
+            </div> -->
         </div>
         <div class="popup--shadow">
             <div class="popup">
@@ -36,8 +35,10 @@
                     <option value="homework">homework 📒</option>
                     <option value="work">work 💻</option>
                 </select>
-                <input type="text" placeholder="your note">
+                <input type="text" placeholder="title" class="note--content title">
+                <input type="text" placeholder="your note" class="note--content desc">
                 <button class="popup--button">Add</button>
+                <p class="error--info"></p>
             </div>
         </div>
     </div>

@@ -1,153 +1,233 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-:root{
+
+:root {
     --note-width: 140px;
     --note-height: 140px;
 }
-body>*{
+
+body {
+    background: rgb(255, 237, 237);
+    background: linear-gradient(90deg, rgba(255, 237, 237, 1) 0%, rgba(182, 237, 255, 1) 100%, rgba(238, 172, 172, 1) 100%);
+}
+
+body>* {
     font-family: 'Lora', sans-serif;
 }
-.wrapper{
+
+.wrapper {
     font-family: 'Lato', sans-serif;
     width: 100%;
     min-height: 100vh;
+    overflow: hidden;
 }
-.nav{
+
+.nav {
     position: relative;
     width: 100%;
     height: 8vh;
     padding-right: .5rem;
-    /* background-color: #ddd; */
+    background-color: #fff;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     gap: .5rem;
     border-bottom: 1px solid #000;
-    box-shadow: 0 5px 15px rgba(0,0,0,.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
 }
-.nav>h2{
+
+.nav>h2 {
     position: absolute;
-    left:10px;
+    left: 10px;
 }
-.nav--btn{
+
+.nav--btn {
     width: 6vh;
     height: 6vh;
-    background-color: #fff;
     border: none;
-    font-size: 24px;
-    color: rgb(40,40,40);
-    transition:.2s;
+    font-size: 22px;
+    color: rgb(40, 40, 40);
+    transition: .2s;
+    background-color: transparent;
 }
-.nav--btn.del:hover{
+
+.nav--btn.del:hover {
     color: red;
     transform: translateY(-5px);
 }
-.nav--btn.add:hover{
+
+.nav--btn.add:hover {
     color: greenyellow;
     animation: rotate .2s ease;
 }
 
-@keyframes rotate{
-    0%{
+.nav--btn.dm:hover {
+    color: rgb(0, 204, 255);
+    transform: scale(1.05);
+}
+
+@keyframes rotate {
+    0% {
         transform: rotate(0);
     }
-    100%{
+
+    100% {
         transform: rotate(360deg);
     }
 }
-.notes--container{
+
+.notes--container {
     display: flex;
     flex-wrap: wrap;
     flex-grow: 1;
     padding: 20px 10px;
     gap: 20px;
 }
-.note{
+
+.note {
     position: relative;
     width: var(--note-width);
     height: var(--note-height);
     background-color: rgb(196, 196, 106);
     border: 1px solid #000;
-    box-shadow: 10px 10px 10px rgba(0,0,0,.2);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, .2);
+    padding: 10px;
 }
-.note--title{
-    margin: 5px;
-    padding: 5px;
+
+.note--title {
+    margin: 5px 0;
+    padding-bottom: 5px;
     border-bottom: 1px solid #000;
     font-size: 20px;
 }
-.note--content{
-    padding: 10px;
+
+.note--content {
     font-size: 14px;
 }
-.note--delete{
+
+.note--delete {
     position: absolute;
-    top:10px;
+    top: 15px;
     right: 10px;
     width: 25px;
     height: 25px;
     border: none;
+    font-size: 18px;
     background-color: transparent;
     cursor: pointer;
     transition: background-color .2s;
 }
-.note--delete:hover{
+
+.note--delete:hover {
     background-color: rgb(251, 255, 0);
 }
+
 /* popup */
-.popup{
+.popup {
     position: fixed;
     bottom: 0;
     width: 100%;
     height: 50vh;
     border: 1px solid #000;
+    background-color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
     transform: translateY(50vh);
-    transition: transform .3s;
+    transition: .3s;
 }
-.popup--button{
+
+.popup--button {
     width: 80px;
     height: 25px;
     border: 1px solid #000;
     background-color: transparent;
+    transition: .3s;
 }
-.popup>input,.popup>select{
-    width: 200px;
+.popup--button:hover{
+    background-color: #000;
+    color: #fff;
+}
+.popup--button.dark:hover{
+    background-color: #fff;
+    color: #000;
+}
+.popup>input,
+.popup>select {
+    width: 250px;
     height: 30px;
     padding: 5px;
     overflow: hidden;
     border: 1px solid #000;
+    font-size: 15px;
+    border-radius: 5px;
+    background-color: RGBA(0,0,0,.2);
+    color: #fff;
 }
+.popup>select{
+    color: rgb(133, 133, 133);
+}
+
 .popup>input:focus,
-.popup>select:focus{
+.popup>select:focus {
     outline: none;
 }
-.popup>input::placeholder{
+
+.popup>input::placeholder {
     transition: .3s linear;
+    color: rgb(133, 133, 133);
 }
-.popup>input:focus::placeholder{
+
+.popup>input:focus::placeholder {
     transform: translateX(500px);
 }
-.popup.active{
-    transform: translateY(0);
-    box-shadow: 0 -5px 10px rgba(0,0,0,.2);
-}
 
-.popup--shadow{
+.popup--shadow {
+    position: absolute;
+    display: none;
     width: 100%;
     height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .5);
 }
-.popup--shadow.active{
-    background-color: rgba(0,0,0,.6);
+
+.popup--shadow.active {
+    display: flex;
 }
 
+.popup--shadow.active>.popup {
+    transform: translateY(0);
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, .2);
+}
 
+.dark {
+    color: #fff;
+    background: rgb(0, 117, 119);
+    background: linear-gradient(0deg, rgba(0, 117, 119, 1) 0%, rgba(31, 31,31, 1) 100%);
+}
 
+.nav.dark {
+    background: none;
+    background-color: rgb(31, 31, 31);
+}
+.note--title.dark,
+.note--content.dark{
+    color: #000;
+}
+.nav--btn.dark,
+.popup--button.dark {
+    color: #fff;
+    background: none;
+    border-color: #fff;
+}
+.popup.dark{
+    background-color: rgb(31,31,31);
+}

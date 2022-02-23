@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/6e0bdbaa9a.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="nav">
+            <h2>DailyNotes</h2>
+            <button class="nav--btn add">
+                add</i>
+            </button>
+            <button class="nav--btn del"><i class="fas fa-trash-alt"></i></button>
+        </div>
+        <div class="notes--container">
+            <div class="note">
+                <h2 class="note--title">Zakupy</h2>
+                <p class="note--content">mąka, wódka, piwo, bimber</p>
+                <button class="note--delete"><i class="fas fa-trash-alt"></i></button>
+            </div>
+        </div>
+        <div class="popup--shadow">
+            <div class="popup">
+                <h2>Create new note</h2>
+                <select name="categories" id="category-select">
+                    <option value="">category</option>
+                    <option value="shopping">shopping 🛒</option>
+                    <option value="daily">daily chores 🧹</option>
+                    <option value="homework">homework 📒</option>
+                    <option value="work">work 💻</option>
+                </select>
+                <input type="text" placeholder="your note">
+                <button class="popup--button">Add</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

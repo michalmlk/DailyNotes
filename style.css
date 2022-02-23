@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --note-width: 140px;
+    --note-height: 140px;
+}
+body>*{
+    font-family: 'Lora', sans-serif;
+}
+.wrapper{
+    font-family: 'Lato', sans-serif;
+    width: 100%;
+    min-height: 100vh;
+}
+.nav{
+    position: relative;
+    width: 100%;
+    height: 8vh;
+    padding-right: .5rem;
+    /* background-color: #ddd; */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: .5rem;
+    border-bottom: 1px solid #000;
+    box-shadow: 0 5px 15px rgba(0,0,0,.2);
+}
+.nav>h2{
+    position: absolute;
+    left:10px;
+}
+.nav--btn{
+    width: 6vh;
+    height: 6vh;
+    background-color: #fff;
+    border: none;
+    font-size: 24px;
+    color: rgb(40,40,40);
+    transition:.2s;
+}
+.nav--btn.del:hover{
+    color: red;
+    transform: translateY(-5px);
+}
+.nav--btn.add:hover{
+    color: greenyellow;
+    animation: rotate .2s ease;
+}
+
+@keyframes rotate{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.notes--container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    padding: 20px 10px;
+    gap: 20px;
+}
+.note{
+    position: relative;
+    width: var(--note-width);
+    height: var(--note-height);
+    background-color: rgb(196, 196, 106);
+    border: 1px solid #000;
+    box-shadow: 10px 10px 10px rgba(0,0,0,.2);
+}
+.note--title{
+    margin: 5px;
+    padding: 5px;
+    border-bottom: 1px solid #000;
+    font-size: 20px;
+}
+.note--content{
+    padding: 10px;
+    font-size: 14px;
+}
+.note--delete{
+    position: absolute;
+    top:10px;
+    right: 10px;
+    width: 25px;
+    height: 25px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color .2s;
+}
+.note--delete:hover{
+    background-color: rgb(251, 255, 0);
+}
+/* popup */
+.popup{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50vh;
+    border: 1px solid #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    transform: translateY(50vh);
+    transition: transform .3s;
+}
+.popup--button{
+    width: 80px;
+    height: 25px;
+    border: 1px solid #000;
+    background-color: transparent;
+}
+.popup>input,.popup>select{
+    width: 200px;
+    height: 30px;
+    padding: 5px;
+    overflow: hidden;
+    border: 1px solid #000;
+}
+.popup>input:focus,
+.popup>select:focus{
+    outline: none;
+}
+.popup>input::placeholder{
+    transition: .3s linear;
+}
+.popup>input:focus::placeholder{
+    transform: translateX(500px);
+}
+.popup.active{
+    transform: translateY(0);
+    box-shadow: 0 -5px 10px rgba(0,0,0,.2);
+}
+
+.popup--shadow{
+    width: 100%;
+    height: 100vh;
+}
+.popup--shadow.active{
+    background-color: rgba(0,0,0,.6);
+}
+
+
+

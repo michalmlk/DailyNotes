@@ -84,8 +84,8 @@ const prepareDOMElements = () => {
     notesArea = document.querySelector('.notes--container')
 
     category = popup.querySelector('#category-select')
-    content = document.querySelector('.note--content.desc')
-    noteTitle = document.querySelector('.note--content.title')
+    content = document.querySelector('.desc')
+    noteTitle = document.querySelector('.title')
     deleteBtn = document.querySelector('.note--delete')
     errorInfo = document.querySelector('.error--info')
 

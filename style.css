@@ -7,8 +7,8 @@
 }
 
 :root {
-    --note-width: 140px;
-    --note-height: 140px;
+    --note-width: 160px;
+    --note-height: 160px;
 }
 
 body {
@@ -37,7 +37,6 @@ body>* {
     justify-content: flex-end;
     align-items: center;
     gap: .5rem;
-    border-bottom: 1px solid #000;
     box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
 }
 
@@ -85,39 +84,51 @@ body>* {
     display: flex;
     flex-wrap: wrap;
     flex-grow: 1;
-    padding: 20px 10px;
+    padding: 20px;
     gap: 20px;
 }
 
-.note {
+.note{
     position: relative;
     width: var(--note-width);
-    height: var(--note-height);
+    min-height: var(--note-height);
     background-color: rgb(196, 196, 106);
-    border: 1px solid #000;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, .2);
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10px;
 }
 
 .note--title {
-    margin: 5px 0;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #000;
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-start;
+    padding: 10px;
+    background-color: rgba(0,0,0,.1);
+    width: 100%;
     font-size: 20px;
 }
 
-.note--content {
+.note--content{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
     font-size: 14px;
+    padding: 5px;
+    max-width: calc(100% - 20px);
+    inline-size: calc(100% - 20px);
+    overflow-wrap: break-word;
 }
 
 .note--delete {
     position: absolute;
-    top: 15px;
+    top: 10px;
     right: 10px;
     width: 25px;
     height: 25px;
     border: none;
-    font-size: 18px;
+    font-size: 20px;
     background-color: transparent;
     cursor: pointer;
     transition: background-color .2s;
@@ -169,7 +180,7 @@ body>* {
     font-size: 15px;
     border-radius: 5px;
     background-color: RGBA(0,0,0,.2);
-    color: #fff;
+    color: #000;
 }
 .popup>select{
     color: rgb(133, 133, 133);
@@ -229,5 +240,37 @@ body>* {
     border-color: #fff;
 }
 .popup.dark{
-    background-color: rgb(31,31,31);
+    background: rgb(31,31,31);
+}
+.popup.dark>select,
+.popup.dark>input{
+    color:#fff;
+}
+
+@media(max-width: 916px) and (orientation: landscape){
+    .nav{
+        height: 15vh;
+    }
+    .popup{
+        height: 80vh;
+    }
+}
+@media(max-width: 912px){
+    .nav>h2{
+        font-size: 32px;
+    }
+    .popup>select,
+    .popup>input{
+        width: 350px;
+        height: 40px;
+        font-size: 16px;
+        padding-left: 10px;
+    }
+    .popup--button{
+        width: 100px;
+        height: 32px;
+    }
+    .nav--btn{
+        font-size: 24px;
+    }
 }

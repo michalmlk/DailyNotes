@@ -1,4 +1,4 @@
-let addBtn, deleteAllBtn, popup, popupShadow, acceptTaskBtn, category, content, noteTitle, notesArea, errorInfo, darkModeBtn, navBar
+let addBtn, deleteAllBtn, popup, popupShadow, acceptTaskBtn, category, content, noteTitle, notesArea, errorInfo, darkModeBtn, navBar, categoryGroup
 
 const openPopup = (e) => {
     popup.classList.add('active')
@@ -41,6 +41,7 @@ const addNewTask = () => {
 
     
     newNote.classList.add('note')
+    newNote.setAttribute('category', currCategory)
     header.classList.add('note--title')
     currContent.classList.add('note--content')
     btnDel.classList.add('note--delete')
@@ -71,6 +72,20 @@ const addNewTask = () => {
         errorInfo.textContent=''
     }
 }
+const groupNotes = () =>{
+    const allNotes = document.querySelectorAll('.note')
+    const category = categoryGroup.value
+    allNotes.forEach(e =>{
+        if(categoryGroup.value==='default'){
+            allNotes.forEach(e=>e.style.display='flex')
+        }
+        else if(e.getAttribute('category')!=categoryGroup.value){
+            e.style.display='none'
+        }else{
+            e.style.display='flex'
+        }
+    })
+}
 
 const prepareDOMElements = () => {
     addBtn = document.querySelector('.nav--btn.add')
@@ -88,7 +103,7 @@ const prepareDOMElements = () => {
     noteTitle = document.querySelector('.title')
     deleteBtn = document.querySelector('.note--delete')
     errorInfo = document.querySelector('.error--info')
-
+    categoryGroup = document.querySelector('#cat')
 }
 
 const prepareDOMEvents = () => {
@@ -97,6 +112,7 @@ const prepareDOMEvents = () => {
     acceptTaskBtn.addEventListener('click', addNewTask)
     deleteAllBtn.addEventListener('click', deleteAllNotes)
     darkModeBtn.addEventListener('click',darkMode)
+    categoryGroup.addEventListener('change', groupNotes)
 }
 const main = () => {
     prepareDOMElements()

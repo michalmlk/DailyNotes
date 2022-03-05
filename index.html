@@ -7,13 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
-    <script src="https://kit.fontawesome.com/6e0bdbaa9a.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/73f9b9df0e.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="wrapper">
         <div class="nav">
             <h2>DailyNotes</h2>
+            <select name="category" id="cat">
+                <option value="default">sort by</option>
+                <option value="shopping">shopping 🛒</option>
+                <option value="daily">daily chores 🧹</option>
+                <option value="homework">homework 📒</option>
+                <option value="work">work 💻</option>
+            </select>
             <button class="nav--btn add"><i class="fa-solid fa-plus"></i></button>
             <button class="nav--btn del"><i class="fas fa-trash-alt"></i></button>
             <button class="nav--btn dm"><i class="fa-solid fa-moon"></i></button>
